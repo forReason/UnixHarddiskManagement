@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnixHarddiskManagement", "UnixHarddiskManagement\UnixHarddiskManagement.csproj", "{17095C13-FC84-4B13-946D-618D1CBBE53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnixHarddiskManagement.Tests", "UnixHarddiskManagement.Tests\UnixHarddiskManagement.Tests.csproj", "{103CFCCF-BB47-424B-8DD9-291EB9074F8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3A38720F-7859-4409-861D-C52D8EAFDACF}"
+	ProjectSection(SolutionItems) = preProject
+		ToDo.txt = ToDo.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17095C13-FC84-4B13-946D-618D1CBBE53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17095C13-FC84-4B13-946D-618D1CBBE53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17095C13-FC84-4B13-946D-618D1CBBE53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17095C13-FC84-4B13-946D-618D1CBBE53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103CFCCF-BB47-424B-8DD9-291EB9074F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103CFCCF-BB47-424B-8DD9-291EB9074F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103CFCCF-BB47-424B-8DD9-291EB9074F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103CFCCF-BB47-424B-8DD9-291EB9074F8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAB78391-5C02-4ADE-9B4E-7EB6FDF317F6}
+	EndGlobalSection
+EndGlobal

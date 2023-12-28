@@ -1,0 +1,2 @@
+- add functions to get sizes in units / to convert units
+- add functions to create and format disks
