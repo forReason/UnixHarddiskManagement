@@ -1,2 +1,2 @@
-- add functions to get sizes in units / to convert units
+- add functions to get sizes in units / to convert units in mips (MiB, Gib, Tib, ...)
 - add functions to create and format disks

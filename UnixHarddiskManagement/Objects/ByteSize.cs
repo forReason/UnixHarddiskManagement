@@ -3,70 +3,96 @@ using UnixHarddiskManagement.Enumerators;
 
 namespace UnixHarddiskManagement.Objects
 {
-    /// <summary>
-    /// Represents a size in different units.
-    /// </summary>
     public class ByteSize
     {
         /// <summary>
-        /// Gets or sets the unit of measurement for the size.
+        /// the precise byte size. Can be get or set.
         /// </summary>
-        public SizeUnit Unit { get; set; }
+        public ulong Bytes { get; set; }
 
         /// <summary>
-        /// Gets or sets the value in the specified unit.
+        /// creates a Sizeinfo with initial value of 0
         /// </summary>
-        public double Value { get; set; }
+        public ByteSize()
+        {
+            this.Bytes = 0;
+        }
 
         /// <summary>
-        /// Initializes a new instance of the Size class with specified unit and value.
+        /// creates a Sizeinfo from a floating point unit
         /// </summary>
-        /// <param name="unit">The unit of measurement.</param>
-        /// <param name="value">The value in the specified unit.</param>
+        /// <param name="unit"></param>
+        /// <param name="value"></param>
         public ByteSize(SizeUnit unit, double value)
+        {
+            SetSize(unit, value);
+        }
+
+        /// <summary>
+        /// creates a Sizeinfo from a precise floating point unit
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="value"></param>
+        public ByteSize(SizeUnit unit, decimal value)
+        {
+            SetSize(unit, value);
+        }
+
+        /// <summary>
+        /// creates a Sizeinfo from a precise size
+        /// </summary>
+        /// <param name="bytes"></param>
+        public ByteSize(ulong bytes)
+        {
+            Bytes = bytes;
+        }
+
+        /// <summary>
+        /// returns the floating point size in the requested unit
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        public double GetSize(SizeUnit unit)
+        {
+            return Bytes / (double)unit;
+        }
+
+        /// <summary>
+        /// returns the precise floating point size in the requested unit
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        public decimal GetSizeDecimal(SizeUnit unit)
+        {
+            return Bytes / (decimal)unit;
+        }
+
+        /// <summary>
+        /// sets the value according to the unit and floating point size
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="value"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public void SetSize(SizeUnit unit, double value)
         {
             if (value < 0)
                 throw new ArgumentOutOfRangeException(nameof(value), "Value must be non-negative.");
 
-            Unit = unit;
-            Value = value;
+            Bytes = (ulong)(value * (double)unit);
         }
 
         /// <summary>
-        /// Gets the size in bytes.
+        /// sets a precise value according to a unit and a floating point decimal value
         /// </summary>
-        public ulong Bytes => (ulong)((ulong)Unit * Value);
-
-        /// <summary>
-        /// Sets the size based on a byte count, approximating to the nearest unit.
-        /// </summary>
-        /// <param name="bytes">The size in bytes.</param>
-        public void SetSizeFromBytes(ulong bytes)
+        /// <param name="unit"></param>
+        /// <param name="value"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public void SetSize(SizeUnit unit, decimal value)
         {
-            if (bytes == 0)
-            {
-                Unit = SizeUnit.b;
-                Value = 0;
-                return;
-            }
+            if (value < 0)
+                throw new ArgumentOutOfRangeException(nameof(value), "Value must be non-negative.");
 
-            SizeUnit[] units = (SizeUnit[])Enum.GetValues(typeof(SizeUnit));
-            SizeUnit selectedUnit = SizeUnit.b;
-            double value = bytes;
-
-            for (int i = units.Length - 1; i >= 0; i--)
-            {
-                double convertedValue = bytes / (double)units[i];
-                if (convertedValue >= 1)
-                {
-                    selectedUnit = units[i];
-                    value = convertedValue;
-                    break;
-                }
-            }
-
-            Unit = selectedUnit;
-            Value = value;
+            Bytes = (ulong)(value * (decimal)unit);
         }
     }
 }

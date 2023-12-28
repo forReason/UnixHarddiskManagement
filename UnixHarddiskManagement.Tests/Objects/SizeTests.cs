@@ -32,21 +32,20 @@ namespace UnixHarddiskManagement.Tests
         public void SetSizeFromBytes_ShouldSetCorrectUnitAndValue(ulong bytes, SizeUnit expectedUnit, double expectedValue)
         {
             // Arrange
-            var size = new ByteSize(SizeUnit.b, 0);
+            var size = new ByteSize();
 
             // Act
-            size.SetSizeFromBytes(bytes);
+            size.Bytes = bytes;
 
             // Assert
-            Assert.Equal(expectedUnit, size.Unit);
-            Assert.Equal(expectedValue, size.Value, 5); // 5 decimal places precision
+            Assert.Equal(expectedValue, size.GetSize(expectedUnit), 5); // 5 decimal places precision
         }
 
         [Fact]
         public void Constructor_ShouldThrowArgumentOutOfRangeExceptionForNegativeValue()
         {
             // Arrange, Act, and Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new ByteSize(SizeUnit.b, -1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new ByteSize(SizeUnit.b, -1d));
         }
 
         // Additional tests can be added to cover more scenarios

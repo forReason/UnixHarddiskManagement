@@ -45,7 +45,7 @@ namespace UnixHarddiskManagement.Tests
             HarddiskManager manager = new HarddiskManager(host: "testrig", username: "testuser", password: "foobar", keyFile: null);
             FileSystemFilter filter = new FileSystemFilter();
             filter.DeviceTypes = [DeviceType.Partition];
-            filter.AvailableSizeMaximum = new ByteSize(SizeUnit.gb, 40);
+            filter.AvailableSizeMaximum = new ByteSize(SizeUnit.gb, 40d);
             var fileSystems = manager.GetFileSystems(filter);
             { }
         }
@@ -55,7 +55,7 @@ namespace UnixHarddiskManagement.Tests
             HarddiskManager manager = new HarddiskManager(host: "testrig", username: "testuser", password: "foobar", keyFile: null);
             FileSystemFilter filter = new FileSystemFilter();
             filter.DeviceTypes = [DeviceType.Disk];
-            filter.AvailableSizeMinimum = new ByteSize(SizeUnit.gb, 40);
+            filter.AvailableSizeMinimum = new ByteSize(SizeUnit.gb, 40d);
             var fileSystems = manager.GetFileSystems(filter);
             { }
         }
